@@ -371,6 +371,8 @@
     if (!self.disableUIPageControl){
         pageControl.currentPage = page;
     }
+    
+    [self.delegate didScrollToPageIndex:page];
 }
 
 

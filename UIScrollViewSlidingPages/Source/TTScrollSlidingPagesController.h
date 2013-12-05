@@ -32,6 +32,12 @@
 #import "TTSlidingPagesDataSource.h"
 @class TTScrollViewWrapper;
 
+@protocol TTSlidingPagesDelegate <NSObject>
+
+- (void)didScrollToPageIndex:(int)index;
+
+@end
+
 @interface TTScrollSlidingPagesController : UIViewController<UIScrollViewDelegate>{
     int currentPageBeforeRotation;
     bool viewDidLoadHasBeenCalled;
@@ -50,8 +56,7 @@
 -(int)getCurrentDisplayedPage;
 -(int)getXPositionOfPage:(int)page;
 
-
-
+@property (nonatomic, assign) id<TTSlidingPagesDelegate> delegate;
 @property (nonatomic, strong) id<TTSlidingPagesDataSource> dataSource;
 
 /** @property titleScrollerHidden
