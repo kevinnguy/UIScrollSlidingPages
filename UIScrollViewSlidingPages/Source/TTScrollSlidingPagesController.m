@@ -371,8 +371,6 @@
     if (!self.disableUIPageControl){
         pageControl.currentPage = page;
     }
-    
-    [self.delegate didScrollToPageIndex:page];
 }
 
 
@@ -525,6 +523,7 @@
 //        bottomScrollView.delegate = nil;
         bottomScrollView.contentOffset = CGPointMake(bottomScrollOffset, 0);
 //        bottomScrollView.delegate = self;
+        [self.delegate didScrollToPageIndex:pageNumber];
     }
     else if (scrollView == bottomScrollView){
         //translate the bottom scroll to the top scroll. The bottom scroll items can in theory be different widths so it's a bit more complicated.
