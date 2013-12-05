@@ -96,12 +96,12 @@
     
     TTBlackTriangle *triangle;
     if (!self.titleScrollerHidden){
-        //add a triangle view to point to the currently selected page from the header
-        int triangleWidth = 30;
-        int triangleHeight = 10;
-        triangle = [[TTBlackTriangle alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-(triangleWidth/2), nextYPosition/*start at the top of the nextYPosition, but dont increment the yposition, so this means the triangle sits on top of the topscroller and cuts into it a bit*/, triangleWidth, triangleHeight)];
-        triangle.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-        [self.view addSubview:triangle];
+//        //add a triangle view to point to the currently selected page from the header
+//        int triangleWidth = 30;
+//        int triangleHeight = 10;
+//        triangle = [[TTBlackTriangle alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-(triangleWidth/2), nextYPosition/*start at the top of the nextYPosition, but dont increment the yposition, so this means the triangle sits on top of the topscroller and cuts into it a bit*/, triangleWidth, triangleHeight)];
+//        triangle.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+//        [self.view addSubview:triangle];
         
         //set up the top scroller (for the nav titles to go in) - it is one frame wide, but has clipToBounds turned off to enable you to see the next and previous items in the scroller. We wrap it in an outer uiview so that the background colour can be set on that and span the entire view (because the width of the topScrollView is only one frame wide and centered).
         topScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.titleScrollerItemWidth, self.titleScrollerHeight)];
@@ -139,7 +139,8 @@
     bottomScrollView.showsVerticalScrollIndicator = NO;
     bottomScrollView.showsHorizontalScrollIndicator = NO;
     bottomScrollView.directionalLockEnabled = YES;
-    bottomScrollView.delegate = self; //move the top scroller proportionally as you drag the bottom.
+    bottomScrollView.scrollEnabled = NO;
+//    bottomScrollView.delegate = self; //move the top scroller proportionally as you drag the bottom.
     bottomScrollView.alwaysBounceVertical = NO;
     [self.view addSubview:bottomScrollView];
     
@@ -458,6 +459,18 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     int currentPage = [self getCurrentDisplayedPage];
     
+    if (scrollView == topScrollView) {
+        NSLog(@"break");
+        
+    } else if (scrollView == bottomScrollView) {
+        NSLog(@"break");
+
+    } else {
+        NSLog(@"break");
+
+    }
+    
+    
     if (!self.zoomOutAnimationDisabled){
         //Do a zoom out effect on the current view and next view depending on the amount scrolled
         double minimumZoom = 0.93;
@@ -506,9 +519,9 @@
         //translate that to the percent through the bottom scroller page to scroll, by doing the (percent through the top header * the bottom width) + the bottomPageStart.
         int bottomScrollOffset = (percentOfTop * bottomPageWidth) + bottomPageStart;
         
-        bottomScrollView.delegate = nil;
+//        bottomScrollView.delegate = nil;
         bottomScrollView.contentOffset = CGPointMake(bottomScrollOffset, 0);
-        bottomScrollView.delegate = self;
+//        bottomScrollView.delegate = self;
     }
     else if (scrollView == bottomScrollView){
         //translate the bottom scroll to the top scroll. The bottom scroll items can in theory be different widths so it's a bit more complicated.
