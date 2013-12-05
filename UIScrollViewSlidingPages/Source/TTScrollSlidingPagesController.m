@@ -360,11 +360,12 @@
     
     //scroll to the page
     [bottomScrollView setContentOffset: CGPointMake([self getXPositionOfPage:page],0) animated:animated];
+    [topScrollView setContentOffset: CGPointMake(page * topScrollView.frame.size.width, 0) animated:animated];
     
-    if (!animated){
-        //if the scroll is not animated, we also need to move the topScrollView - we don't want (if it's animated, it'll call the scrollViewDidScroll delegate which keeps everything in sync, so calling it twice would mess things up).
-        [topScrollView setContentOffset: CGPointMake(page * topScrollView.frame.size.width, 0) animated:animated];
-    }
+//    if (!animated){
+//        //if the scroll is not animated, we also need to move the topScrollView - we don't want (if it's animated, it'll call the scrollViewDidScroll delegate which keeps everything in sync, so calling it twice would mess things up).
+//        [topScrollView setContentOffset: CGPointMake(page * topScrollView.frame.size.width, 0) animated:animated];
+//    }
     
     //update the pagedots pagenumber
     if (!self.disableUIPageControl){
