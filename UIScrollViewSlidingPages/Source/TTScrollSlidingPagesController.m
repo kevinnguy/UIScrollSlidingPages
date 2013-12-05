@@ -459,16 +459,16 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     int currentPage = [self getCurrentDisplayedPage];
     
-    if (scrollView == topScrollView) {
-        NSLog(@"break");
-        
-    } else if (scrollView == bottomScrollView) {
-        NSLog(@"break");
-
-    } else {
-        NSLog(@"break");
-
-    }
+//    if (scrollView == topScrollView) {
+//        NSLog(@"break");
+//        
+//    } else if (scrollView == bottomScrollView) {
+//        NSLog(@"break");
+//
+//    } else {
+//        NSLog(@"break");
+//
+//    }
     
     
     if (!self.zoomOutAnimationDisabled){
