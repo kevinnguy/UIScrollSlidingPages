@@ -56,14 +56,14 @@
         
         UIImage *backgroundImage = [UIImage imageNamed:@"diagmonds.png"];
         if (backgroundImage != nil){
-            self.titleScrollerBackgroundColour = [UIColor colorWithPatternImage:backgroundImage];
+            self.titleScrollerBackgroundColour = [UIColor colorWithRed:224/255.0f green:219/255.0f blue:208/255.0f alpha:1.0f];
         } else {
-            self.titleScrollerBackgroundColour = [UIColor blackColor];
+            self.titleScrollerBackgroundColour = [UIColor colorWithRed:224/255.0f green:219/255.0f blue:208/255.0f alpha:1.0f];
         }
         
-        self.titleScrollerTextColour = [UIColor whiteColor];
+        self.titleScrollerTextColour = [UIColor colorWithRed:166/255.0f green:45/255.0f blue:50/255.0f alpha:1.0f];
         self.disableTitleScrollerShadow = NO;
-        self.disableUIPageControl = NO;
+        self.disableUIPageControl = YES;
         self.initialPageNumber = 0;
         self.pagingEnabled = YES;
         self.zoomOutAnimationDisabled = NO;
@@ -131,7 +131,6 @@
         nextYPosition += self.titleScrollerHeight;
     }
     
-    
     //set up the bottom scroller (for the content to go in)
     bottomScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, nextYPosition, self.view.frame.size.width, self.view.frame.size.height-nextYPosition)];
     bottomScrollView.pagingEnabled = self.pagingEnabled;
@@ -160,6 +159,11 @@
         
         [self.view bringSubviewToFront:topScrollViewWrapper];//bring view to sit on top so you can see the shadow!
     }
+    
+    UIView *barView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(topScrollViewWrapper.frame) - 3, CGRectGetWidth(topScrollViewWrapper.frame), 3)];
+    barView.backgroundColor = [UIColor colorWithRed:166/255.0f green:45/255.0f blue:50/255.0f alpha:1.0f];
+    [topScrollViewWrapper addSubview:barView];
+    [topScrollViewWrapper bringSubviewToFront:barView];
     
     if (triangle != nil){
         [self.view bringSubviewToFront:triangle];
@@ -228,14 +232,14 @@
             label.textAlignment = NSTextAlignmentCenter;
             label.adjustsFontSizeToFitWidth = YES;
             label.textColor = self.titleScrollerTextColour;
-            label.font = [UIFont boldSystemFontOfSize:19];
+            label.font = [UIFont boldSystemFontOfSize:20];
             label.backgroundColor = [UIColor clearColor];
             
             //add subtle drop shadow
-            label.layer.shadowColor = [[UIColor blackColor] CGColor];
-            label.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
-            label.layer.shadowRadius = 2.0f;
-            label.layer.shadowOpacity = 1.0f;
+//            label.layer.shadowColor = [[UIColor blackColor] CGColor];
+//            label.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+//            label.layer.shadowRadius = 2.0f;
+//            label.layer.shadowOpacity = 1.0f;
             
             //set view as the top item
             topItem = (UIView *)label;
