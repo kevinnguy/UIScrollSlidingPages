@@ -236,10 +236,8 @@
             label.backgroundColor = [UIColor clearColor];
             
             //add subtle drop shadow
-//            label.layer.shadowColor = [[UIColor blackColor] CGColor];
-//            label.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
-//            label.layer.shadowRadius = 2.0f;
-//            label.layer.shadowOpacity = 1.0f;
+            label.shadowColor = [UIColor colorWithRed:252/255.0f green:252/255.0f blue:250/255.0f alpha:1.0f];
+            label.shadowOffset = CGSizeMake(0.0f, 1.0f);
             
             //set view as the top item
             topItem = (UIView *)label;
