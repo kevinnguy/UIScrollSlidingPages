@@ -34,6 +34,7 @@
 
 -(id)initWithHeaderText:(NSString*)headerText;
 -(id)initWithHeaderImage:(UIImage*)headerImage;
+-(id)initWithHeaderView:(UIView*)headerView;
 
 //The title text to go in the nav bar
 @property(strong, nonatomic) NSString *headerText;
@@ -41,4 +42,5 @@
 //An image to use in the nav bar (if you set this, the title text will not be used)
 @property(strong, nonatomic) UIImage *headerImage;
 
+@property (nonatomic, strong) UIView *headerView;
 @end

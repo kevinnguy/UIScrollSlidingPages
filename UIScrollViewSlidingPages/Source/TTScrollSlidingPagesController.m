@@ -221,6 +221,11 @@
         } else if (![title isKindOfClass:[TTSlidingPageTitle class]]){ //if someone has implemented the datasource wrong tell them
             [NSException raise:@"TTScrollSlidingPagesController Wrong Title Type" format:@"TTScrollSlidingPagesController: Titles should be instances of TTSlidingPageTitle, one was returned that wasn't a TTSlidingPageTitle. Did you implement the titleForSlidingPagesViewController method in the datasource correctly and with the right return type?"];
         }
+        
+        else if (title.headerView) {
+            topItem = title.headerView;
+        }
+        
         else if (title.headerImage != nil){
             UIImageView *imageView = [[UIImageView alloc] init];
             imageView.contentMode = UIViewContentModeScaleAspectFit;

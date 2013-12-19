@@ -50,4 +50,13 @@
     return (self);
 }
 
+- (id)initWithHeaderView:(UIView *)headerView {
+    self = [super init];
+    if(self)
+    {
+        self.headerView = headerView;
+    }
+    return (self);
+}
+
 @end
