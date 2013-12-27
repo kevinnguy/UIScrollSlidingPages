@@ -35,6 +35,7 @@
 @protocol TTSlidingPagesDelegate <NSObject>
 
 - (void)didScrollToPageIndex:(int)index;
+- (void)isScrollingFromPageIndex:(int)index percentage:(float)percentage;
 
 @end
 

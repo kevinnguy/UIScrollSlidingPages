@@ -237,7 +237,7 @@
             label.textAlignment = NSTextAlignmentCenter;
             label.adjustsFontSizeToFitWidth = YES;
             label.textColor = self.titleScrollerTextColour;
-            label.font = [UIFont boldSystemFontOfSize:20];
+            label.font = [UIFont boldSystemFontOfSize:17];
             label.backgroundColor = [UIColor clearColor];
             
             //add subtle drop shadow
@@ -531,6 +531,7 @@
         bottomScrollView.contentOffset = CGPointMake(bottomScrollOffset, 0);
 //        bottomScrollView.delegate = self;
         [self.delegate didScrollToPageIndex:pageNumber];
+        [self.delegate isScrollingFromPageIndex:pageNumber percentage:percentOfTop];
     }
     else if (scrollView == bottomScrollView){
         //translate the bottom scroll to the top scroll. The bottom scroll items can in theory be different widths so it's a bit more complicated.
